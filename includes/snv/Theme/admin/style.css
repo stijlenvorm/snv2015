@@ -1,0 +1,79 @@
+body{
+    background: #eee;
+}
+
+body.login{
+    background: #0296cc; /* Old browsers */
+    background: -moz-linear-gradient(top,  #0296cc 0%, #01678c 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#0296cc), color-stop(100%,#01678c)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #0296cc 0%,#01678c 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #0296cc 0%,#01678c 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #0296cc 0%,#01678c 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #0296cc 0%,#01678c 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0296cc', endColorstr='#01678c',GradientType=0 ); /* IE6-9 */
+}
+
+
+
+.customH3{
+      border-bottom: 1px solid #eee;
+  background: #333;
+  margin: -10px;
+  margin-bottom: 27px;
+  padding: 10px 9px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.admin-table{ 
+    background: #fff; 
+    border-radius: 4px;
+    padding:10px;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+.admin-table th{
+    padding: 0 10px;
+}
+
+.inputHolder{
+    display: block;
+    height: 35px;
+    line-height: 35px;
+}
+
+.clearfix{
+    clear: both;
+}
+
+
+.inputHolder:after{
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.inputHolder .lefty{
+    width: 33%;
+    float: left;
+    max-width: 250px;
+    text-transform: capitalize;
+}
+.inputHolder .righty{
+    width: 67%;
+    float: left;
+}
+
+.social-media-info{
+    width: 33%;
+    max-width: 130px;
+    display: block;
+    float: left;
+    text-align: right;
+}
