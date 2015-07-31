@@ -16,6 +16,7 @@ class Shortcodes
         add_shortcode('childpages', array($this, 'childPages'));
         add_shortcode('button', array($this, 'button'));
         add_shortcode('counter', array($this, 'counterBox'));
+        add_shortcode('pageblock', array($this, 'pageBlock'));
         // counter circle
 
     }
@@ -26,6 +27,34 @@ class Shortcodes
 
     }
 
+    // print the title, content and readmore button for the given page
+    public function pageBlock($atts)
+    {
+        // attritbute setup
+        $atts = shortcode_atts(array(
+            'class' => '',
+            'buttonclass' => 'btn btn-primary',
+            'pageid' => null,
+            'header' => 'h2',
+            'length' => 200,
+            'buttonlabel' => 'lees meer', 
+        ), $atts);
+
+        if($atts['pageid'] === null || !is_numeric($atts['pageid'])) {
+            return false;
+        }
+
+        $post = get_post($atts['pageid']);
+        if ($post) {
+            $title = '<' . $atts['header'] . '>' . $post->post_title . '</'.$atts['header'] . '>' ;
+            $exerpt = '<p>' . substr($post->post_content, 0, $atts['length']) . '</p>';
+            $readMore = '<a class="'.$atts['buttonclass'].'" href="'.$post->guid.'">'.$atts['buttonlabel'] . '</a>';
+
+            return $title . $exerpt . $readMore; 
+        }
+
+        return false;
+    }
     // create a counter
     public function counterBox($atts)
     {
