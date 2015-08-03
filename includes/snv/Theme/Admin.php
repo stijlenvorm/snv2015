@@ -18,6 +18,7 @@ class Admin
         add_action('login_enqueue_scripts', array($this, 'loginScreenLogo'));
         add_filter('login_headerurl', array($this, 'loginScreenLogoURL'));
         add_filter('login_headertitle', array($this, 'loginScreenURLTitle'));
+        add_action( 'wp_dashboard_setup', array($this, 'createDashboardWidgets') );
 
         return true;
     }
@@ -26,6 +27,48 @@ class Admin
     public function theInit()
     {
 
+    }
+
+    public static function deregisterStandardWidgets()
+    {
+        global $wp_meta_boxes;
+        // wp..
+        // unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+        // unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
+        // unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+        // unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+        // unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+        //  unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);
+        // unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+        
+        unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']); // activity with user comments
+        unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']); // wp news (rss)
+
+    }
+
+    public function createDashboardWidgets()
+    {
+        wp_add_dashboard_widget(
+            'snv_wordpress_widget', // Widget slug.
+            'Stijl en Vorm Wordpress nieuws',// Title.
+            array($this, 'setWordpressDashboardWidget') // Display function.
+            );
+
+        wp_add_dashboard_widget(
+            'snv_global_widget', // Widget slug.
+            'Stijl en Vorm Algemeen nieuws',// Title.
+            array($this, 'setGlobalDashboardWidget') // Display function.
+            );
+    }
+
+    public function setWordpressDashboardWidget()
+    {
+        return get_template_part('includes/snv/Theme/admin/widgetSnvWordpressNews');
+    }
+
+    public function setGlobalDashboardWidget()
+    {
+        return get_template_part('includes/snv/Theme/admin/widgetSnvGlobalNews');
     }
 
     public function createExtraMenus()
@@ -38,7 +81,7 @@ class Admin
             'contact-info',
             array($this, 'settingsPage'),
             get_template_directory_uri() . '/includes/snv/Theme/admin/stijlenvorm-icon-small.png'
-        );
+            );
 
         // create theme option sub-menu
         add_submenu_page(
@@ -48,7 +91,7 @@ class Admin
             'administrator',
             'theme-options-snv',
             array($this, 'themePage')
-        );
+            );
 
         //call register settings function
         add_action('admin_init', array($this, 'registerExtraOptions'));
@@ -85,7 +128,7 @@ class Admin
         register_setting('theme-settings-group', 'smoothscroll_js');
         register_setting('theme-settings-group', 'stellar_js');
 
-        
+
         // maps settings
         register_setting('theme-settings-group', 'googlemapsjson');
         register_setting('theme-settings-group', 'googleAPIkey');
@@ -133,7 +176,7 @@ class Admin
             }
         </style>
         <?php
-}
+    }
 
     public function loginScreenLogoURL()
     {

@@ -16,3 +16,5 @@ add_action('init', array(new snv\theme\Admin , 'theInit'));
 add_action('init', array(new snv\theme\ContentHeader , 'theInit'));
 add_action('init', array(new snv\theme\Shortcodes , 'theInit'));
 add_action('init', array(new snv\theme\Snv, 'theInit'));
+
+ add_action( 'wp_dashboard_setup', array('snv\theme\Admin', 'deregisterStandardWidgets') );
