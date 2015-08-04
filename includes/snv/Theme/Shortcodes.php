@@ -334,7 +334,13 @@ class Shortcodes
     // list off all filled in social media channels
     public function socialButtons($atts)
     {
-        $rs = '<ul class="socialButtons">';
+         $atts = shortcode_atts(array(
+            'class' => '',
+            'include' => null,
+            'exclude' => null,
+        ), $atts);
+
+        $rs = '<ul class="socialButtons '.$atts['class'].'">';
         $smOptions = explode(',', SOCIAL_MEDIA_OPTIONS);
 
         if (!empty($atts['include'])) {
