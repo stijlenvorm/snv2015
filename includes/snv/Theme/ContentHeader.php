@@ -27,7 +27,7 @@ class ContentHeader
         // get the meta data
         $meta = get_post_meta($id);
         if (!isset($meta['_header_type'])) {
-            return false;
+            return '<div class="paginaHeader"></div>';
         }
 
         $header = $meta['_header_type'][0];
