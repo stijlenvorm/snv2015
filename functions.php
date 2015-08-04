@@ -5,6 +5,13 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+if(!defined('HEADER_TITLES')) {
+    define('HEADER_TITLES', true);
+}
+if(!defined('SOCIAL_MEDIA_OPTIONS')) {
+    define('SOCIAL_MEDIA_OPTIONS', implode(',', array('facebook','twitter','linkedIn','pinterest','googleplus','youtube','vimeo', 'instagram','tumblr','flickr')));
+}
+
 // include some libraries (DONT REMOVE)
 include get_template_directory() . '/includes/cuztom/cuztom.php';
 include get_template_directory() . '/includes/snv/autoload.php';
@@ -14,11 +21,6 @@ define('SCRIPTS_IN_FOOTER', true);
 
 // if you need to change or add a google API key somewhere use this constant (also available in javascript)
 define('MAPS_API_KEY', get_option('googleAPIkey'));
-
-if(!defined('SOCIAL_MEDIA_OPTIONS')) {
-    define('SOCIAL_MEDIA_OPTIONS', implode(',', array('facebook','twitter','linkedIn','pinterest','googleplus','youtube','vimeo', 'instagram','tumblr','flickr')));
-}
-
 
 if(!function_exists('snvEnqueueScriptStyles')) {
     // enqueue scripts and styles here, not in Footer or Header see:

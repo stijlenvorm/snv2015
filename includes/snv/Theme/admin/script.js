@@ -12,30 +12,61 @@
 	function togglePageHeaderChoices(){
 		var option = $('#_header_type').val();
 		var hide  = {
-			'image'     : function(){ jQuery('#_header_type').closest('tr').siblings().eq(1).hide() },
-			'shortcode' : function(){ jQuery('#_header_type').closest('tr').siblings().eq(0).hide() },
+            'shortcode' : function(){ jQuery('#_header_type').closest('tr').siblings().eq(0).hide() },
+            'image'     : function(){ jQuery('#_header_type').closest('tr').siblings().eq(1).hide() },
+            'video'     : function(){ jQuery('#_header_type').closest('tr').siblings().eq(2).hide() },
+            'title'     : function(){ jQuery('#_header_type').closest('tr').siblings().eq(3).hide() },
+            'titleAs'   : function(){ jQuery('#_header_type').closest('tr').siblings().eq(4).hide() },
+            'subtitle'  : function(){ jQuery('#_header_type').closest('tr').siblings().eq(5).hide() },
+			'subtitleAs': function(){ jQuery('#_header_type').closest('tr').siblings().eq(6).hide() },
 		}
 		var show = {
-			'image'     : function(){ jQuery('#_header_type').closest('tr').siblings().eq(1).show() },
-			'shortcode' : function(){ jQuery('#_header_type').closest('tr').siblings().eq(0).show() },	
+			'shortcode' : function(){ jQuery('#_header_type').closest('tr').siblings().eq(0).show() },
+            'image'     : function(){ jQuery('#_header_type').closest('tr').siblings().eq(1).show() },
+            'video'     : function(){ jQuery('#_header_type').closest('tr').siblings().eq(2).show() },
+            'title'     : function(){ jQuery('#_header_type').closest('tr').siblings().eq(3).show() },
+            'titleAs'   : function(){ jQuery('#_header_type').closest('tr').siblings().eq(4).show() },
+            'subtitle'  : function(){ jQuery('#_header_type').closest('tr').siblings().eq(5).show() },
+            'subtitleAs': function(){ jQuery('#_header_type').closest('tr').siblings().eq(6).show() },
 		}
 
 		switch(option){
 			case 'noHeader' : 	
 			hide.image();
-			hide.shortcode();
-			console.log('noheader');
+            hide.shortcode();
+			hide.video();
+            hide.title();
+            hide.titleAs();
+            hide.subtitle();
+            hide.subtitleAs();
 			break;
 			case 'image' : 	
-			show.image();
 			hide.shortcode();
-			console.log('image');
+            hide.video();
+            show.image();
+            show.title();
+            show.titleAs();
+            show.subtitle();
+            show.subtitleAs();
 			break;
 			case 'shortcode' : 	
 			hide.image();
+            hide.video();
 			show.shortcode();
-			console.log('shortcode');
+            show.title();
+            show.titleAs();
+            show.subtitle();
+            show.subtitleAs();
 			break;
+            case 'video' :  
+            hide.image();
+            show.video();
+            hide.shortcode();
+            show.title();
+            show.titleAs();
+            show.subtitle();
+            show.subtitleAs();
+            break;
 		}
 	}
 

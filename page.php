@@ -1,6 +1,7 @@
 <?php get_header(); ?>
-<?php do_action('contentheader'); ?>
 <?php the_post(); ?>
+<?php do_action('contentheader'); ?>
+
 <div class="container">
 	<div class="row">
 		<div class="col-xd-12 col-sm-8 " role="main">
