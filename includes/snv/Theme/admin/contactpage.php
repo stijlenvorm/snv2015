@@ -1,13 +1,14 @@
 <div class="container-fluid">
     
 
-        <form method="post" action="options.php">
-            <?php settings_fields('contact-settings-group'); ?>
+    <form method="post" action="options.php">
+        <?php settings_fields('contact-settings-group'); ?>
 
-            <?php // algemene info ?>
-            <div class="admin-table">
-                <h3 class="customH3">Contact Informatie - Algemeen</h3>
-                <div class="inputHolder">
+        <?php // algemene info ?>
+        <div class="admin-table">
+            <h3 class="customH3">Contact Informatie - Algemeen</h3>
+            
+            <div class="inputHolder">
                     <div class="lefty">
                         Logo
                     </div>
@@ -17,11 +18,11 @@
 
                         <img id="algemeen_logo_show" src="<?php echo esc_attr( get_option('home-logo') ); ?>" alt="">
                     </div>
-                </div>
+            </div>
 
-                <div class="row">
+            <div class="row">
 
-                    <div class="col-xs-12 col-sm-6">
+                <div class="col-xs-12 col-sm-6">
                         <h2>Contactinformatie</h2>
 
                         <div class="row">
@@ -70,10 +71,9 @@
                                 <input type="text" name="woonplaats" value="<?php echo esc_attr( get_option('woonplaats') ); ?>" placeholder="Arnhem">
                             </div>
                         </div>
-                    </div>
-                
+                </div>
 
-                    <div class="col-xs-12 col-sm-6">
+                <div class="col-xs-12 col-sm-6">
                         <h2>Socialmedia opties</h2>
 
                         <?php 
@@ -89,12 +89,16 @@
                                 </div>
                             </div>
                         <?php endforeach; ?>
-
-                    </div>
+                </div>
             </div>
+        </div>
 
-            <?php submit_button(); ?>
+        <div class="admin-table">
+                <h3 class="customH3">Thema opties</h3>
+                <?php echo do_action('templateChildInformationOptions'); ?>
+        </div>
 
-        </form>
-    </div>
+        <?php submit_button(); ?>
+
+    </form>
 </div>

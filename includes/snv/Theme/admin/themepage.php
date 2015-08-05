@@ -126,6 +126,29 @@ function checkIfSelected($option, $value)
                     </div>
                 </div>
             </div>
+            <?php submit_button(); ?>
+
+            <div class="admin-table">
+                <h3 class="customH3">Thema opt-ins</h3>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                Header Titles <br>
+                                titel en sub titel optie bij de contentHeader
+                            </div>
+                            <div class="col-xs-7">
+                                <select name="header_titles">
+                                    <option value="1" <?php echo checkIfSelected( 'header_titles', 1) ?> >ja</option>
+                                    <option value="2" <?php echo checkIfSelected( 'header_titles', 2) ?> >nee</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <?php submit_button(); ?>
 
             <div class="admin-table">
 
@@ -157,6 +180,13 @@ function checkIfSelected($option, $value)
                 </div>
             </div>
             <?php submit_button(); ?>
+
+            <div class="admin-table">
+                <h3 class="customH3">Child Thema opties</h3>
+                <?php echo do_action('templateChildThemeOptions'); ?>
+            </div>
+            <?php submit_button(); ?>
+
         </form>
     </div>
 </div>

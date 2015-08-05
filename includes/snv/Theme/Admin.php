@@ -20,6 +20,9 @@ class Admin
         add_filter('login_headertitle', array($this, 'loginScreenURLTitle'));
         add_action( 'wp_dashboard_setup', array($this, 'createDashboardWidgets') );
 
+        add_filter('admin_footer_text', array($this, 'remove_footer_admin'));
+        add_action('login_footer', array($this, 'my_addition_to_login_footer'));
+
         return true;
     }
 
@@ -28,6 +31,14 @@ class Admin
     {
 
     }
+
+    public function remove_footer_admin () {
+        echo '&copy; '.date('Y').' - <a href="http://stijlenvorm.nl/" target="_blank" rel="nofollow">stijl en vorm</a>';
+    }
+
+    public function my_addition_to_login_footer() {
+        // echo '<div style="text-align: center;">link to someplace</div>';
+    }    
 
     public static function deregisterStandardWidgets()
     {
@@ -128,6 +139,8 @@ class Admin
         register_setting('theme-settings-group', 'smoothscroll_js');
         register_setting('theme-settings-group', 'stellar_js');
 
+        // opt-oput options 
+        register_setting('theme-settings-group', 'header_titles');
 
         // maps settings
         register_setting('theme-settings-group', 'googlemapsjson');
@@ -136,6 +149,8 @@ class Admin
         if(get_option('googleAPIkey') === false ) {
             update_option('googleAPIkey', htmlspecialchars('AIzaSyAiUL5mg2P798TtcoYuQP3vfd6iaAU2-44') );
         }
+
+        do_action('registerChildOptions');
     }
 
     public function settingsPage()

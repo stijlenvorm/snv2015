@@ -29,6 +29,12 @@
             'subtitle'  : function(){ jQuery('#_header_type').closest('tr').siblings().eq(5).show() },
             'subtitleAs': function(){ jQuery('#_header_type').closest('tr').siblings().eq(6).show() },
 		}
+        
+        // move select titleAs to title and hide parent (also for subtitleAs)
+        jQuery('#_header_titel').parent().prepend(jQuery('#_header_titelals'))
+        jQuery('#_header_subtitel').parent().prepend(jQuery('#_header_subtitelals'))
+        hide.titleAs();
+        hide.subtitleAs();
 
 		switch(option){
 			case 'noHeader' : 	
@@ -36,36 +42,36 @@
             hide.shortcode();
 			hide.video();
             hide.title();
-            hide.titleAs();
+            // hide.titleAs();
             hide.subtitle();
-            hide.subtitleAs();
+            // hide.subtitleAs();
 			break;
 			case 'image' : 	
 			hide.shortcode();
             hide.video();
             show.image();
             show.title();
-            show.titleAs();
+            // show.titleAs();
             show.subtitle();
-            show.subtitleAs();
+            // show.subtitleAs();
 			break;
 			case 'shortcode' : 	
 			hide.image();
             hide.video();
 			show.shortcode();
             show.title();
-            show.titleAs();
+            // show.titleAs();
             show.subtitle();
-            show.subtitleAs();
+            // show.subtitleAs();
 			break;
             case 'video' :  
             hide.image();
             show.video();
             hide.shortcode();
             show.title();
-            show.titleAs();
+            // show.titleAs();
             show.subtitle();
-            show.subtitleAs();
+            // show.subtitleAs();
             break;
 		}
 	}
@@ -96,11 +102,9 @@
         window.original_send_to_editor = window.send_to_editor;
         window.send_to_editor = function(html){
             if (formfield) {
-
                 fileurl = jQuery('img',html).attr('src');
                 jQuery('#'+currentPrepend+'_logo_show').attr('src' , fileurl);
                 jQuery(formfield).val(fileurl);
-
                 tb_remove();
             } else {
                 window.original_send_to_editor(html);

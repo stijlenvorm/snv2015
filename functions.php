@@ -5,9 +5,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-if(!defined('HEADER_TITLES')) {
-    define('HEADER_TITLES', true);
-}
+define('HEADER_TITLES', get_option('header_titles'));
+
 if(!defined('SOCIAL_MEDIA_OPTIONS')) {
     define('SOCIAL_MEDIA_OPTIONS', implode(',', array('facebook','twitter','linkedIn','pinterest','googleplus','youtube','vimeo', 'instagram','tumblr','flickr')));
 }
