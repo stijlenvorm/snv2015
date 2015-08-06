@@ -48,9 +48,9 @@ class Shortcodes
         if ($post) {
             $title = '<' . $atts['header'] . '>' . $post->post_title . '</'.$atts['header'] . '>' ;
             $exerpt = '<p>' . substr($post->post_content, 0, $atts['length']) . '</p>';
-            $readMore = '<a class="'.$atts['buttonclass'].'" href="'.$post->guid.'">'.$atts['buttonlabel'] . '</a>';
+            $readMore = '<p class="ctaHolder"><a class="'.$atts['buttonclass'].'" href="'.$post->guid.'">'.$atts['buttonlabel'] . '</a></p>';
 
-            return $title . $exerpt . $readMore; 
+            return '<div class="pageBlock">' . $title . $exerpt . $readMore . '</div>'; 
         }
 
         return false;
